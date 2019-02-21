@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Praetorium';
+    src: url(../fonts/praebrg.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Cinzel Regular';
+    src: url(../fonts/cinzel-regular.ttf) format('truetype');
+}
+
+html,
+body { height: 100%; }
+
+body {
+    position: relative;
+    background-image: url(../images/Colosseum-Wallpaper.jpg);
+    background-position: center top;
+}
+
+main {
+    background-color: #fcfcea;
+    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    min-width: 80%;
+    min-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    color: #A11111;
+    font-family: 'Praetorium', Georgia, 'Times New Roman', Times, serif;
+    font-size: 8rem;
+    margin: 2rem 1rem;
+}
+
+.start-button {
+    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+    background-color: #90c6ef;
+    color: #222222;
+    border: .2rem solid #c9a758;
+    font-size: 3.5rem;
+    font-weight: bold;
+    height: 5rem;
+    width: 25rem;
+    position: absolute;
+    margin-left: -12.5rem;
+    top: 50%;
+    margin-top: -2.5rem;
+}
+
+.question-div {
+    margin: 0 13rem;
+    color: #222222;
+    line-height: 1.5;
+}
+
+.question-info {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.incorrect-text {
+    font-size: 1.7rem;
+    margin-bottom: .5rem;
+}
+
+img {
+    height: 19rem;
+}
+
+.answers {
+    display: block;
+    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+    background-color: #fcfcea;
+    font-size: 3rem;
+    width: 50%;
+    margin: 0 auto;
+    border: none;
+}
+
+.answers:hover {
+    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+    background-color: #90c6ef;
+    border: .2rem solid #c9a758;
+}
+
+.stats {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.reset-button {
+    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+    background-color: #90c6ef;
+    color: #222222;
+    border: .2rem solid #c9a758;
+    font-size: 3.1rem;
+    width: 28rem;
+}
