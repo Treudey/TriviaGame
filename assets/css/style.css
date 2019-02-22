@@ -14,7 +14,7 @@ body { height: 100%; }
 body {
     position: relative;
     background-image: url(../images/Colosseum-Wallpaper.jpg);
-    background-position: center top;
+    background-position: center center;
 }
 
 main {
@@ -27,6 +27,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 1rem;
 }
 
 .title {
@@ -62,15 +63,6 @@ main {
     margin-bottom: 2rem;
 }
 
-.incorrect-text {
-    font-size: 1.7rem;
-    margin-bottom: .5rem;
-}
-
-img {
-    height: 19rem;
-}
-
 .answers {
     display: block;
     font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
@@ -87,6 +79,15 @@ img {
     border: .2rem solid #c9a758;
 }
 
+.incorrect-text {
+    font-size: 1.7rem;
+    margin-bottom: .5rem;
+}
+
+img {
+    height: 19rem;
+}
+
 .stats {
     font-size: 1.7rem;
     margin-bottom: 1.5rem;
@@ -99,4 +100,54 @@ img {
     border: .2rem solid #c9a758;
     font-size: 3.1rem;
     width: 28rem;
+}
+
+/* ------------ Media Queries -------------- */
+
+@media only screen and (max-width: 1280px) {
+   
+    .title {
+        font-size: 6rem;
+        margin: 0 .5rem 1rem;
+    }
+
+    .start-button {
+        font-size: 3rem;
+        height: 4.5rem;
+        width: 20rem;
+        margin-left: -10rem;
+        margin-top: -2.25rem;
+    }
+
+    .question-div { margin: 0 6rem; }
+
+    .question-info {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .answers { font-size: 2.5rem; }
+    .answers:hover { border-width: .15rem; }
+
+    .incorrect-text {
+        font-size: 1.3rem;
+        margin-bottom: .3rem;
+    }
+    
+    img { height: 16rem; }
+    
+    .end-text {
+        font-size: 2.4rem;
+        margin-bottom: 1.7rem;
+    }
+
+    .stats {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .reset-button {
+        font-size: 2.4rem;
+        width: 21rem; 
+    }
 }
