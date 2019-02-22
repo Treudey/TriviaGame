@@ -8,7 +8,7 @@ var Question = function(question, answers, correctAnswer, gif) {
 };
 
 var q1 = new Question(
-    "Who was assassinated by a group of senators on the Ides of March (15 March), 44 BC?", 
+    "QI: Who was assassinated by a group of senators on the Ides of March (15 March), 44 BC?", 
     ["Mark Antony",
     "Nero",
     "Augustus Caesar",
@@ -17,7 +17,7 @@ var q1 = new Question(
     "./assets/images/julius-death.gif");
 
 var q2 = new Question(
-    'Who created one of the largest empires of the ancient world in 323 BC by the age of thirty?', 
+    'QII: Who created one of the largest empires of the ancient world in 323 BC by the age of thirty?', 
     ['Achilles',
     'Constantine the Great',
     'Alaxander the Great',
@@ -26,16 +26,7 @@ var q2 = new Question(
     "./assets/images/alexander.gif");
 
 var q3 = new Question(
-    'Who wrote the two epic poems the <i>Iliad<i/> and the <i>Odyssey<i/>?', 
-    ['Homer',
-    'Aristotle',
-    'Hesiod',
-    'Virgil'],
-    0, 
-    "./assets/images/homer.gif");
-
-var q4 = new Question(
-    'What was Rome\'s largest amphitheatre?', 
+    'QIII: What was Rome\'s largest amphitheatre?', 
     ['The Circus Maximus',
     'The Colosseum',
     'The Theatre of Marcellus',
@@ -43,8 +34,17 @@ var q4 = new Question(
     1, 
     "./assets/images/colosseum.gif");
 
+var q4 = new Question(
+    'QIV: Who wrote the two epic poems the <i>Iliad<i/> and the <i>Odyssey<i/>?', 
+    ['Homer',
+    'Aristotle',
+    'Hesiod',
+    'Virgil'],
+    0, 
+    "./assets/images/homer.gif");
+
 var q5 = new Question(
-    'Of the Seven Wonders of the Ancient World, which is the only one still standing today?', 
+    'QV: Of the Seven Wonders of the Ancient World, which is the only one still standing today?', 
     ['The Great Pyramid of Giza',
     'The Temple of Artemis at Ephesus',
     'The Statue of Zeus at Olympia',
@@ -52,7 +52,43 @@ var q5 = new Question(
     0, 
     "./assets/images/pyramids.gif");
 
-questionList = [q1, q2, q3, q4, q5];
+var q6 = new Question(
+    'QVI: What powerful woman famously had a love affair with both Julius Caesar and Mark Antony?', 
+    ['Livia',
+    'Octavia',
+    'Hypatia',
+    'Cleopatra'],
+    3, 
+    "./assets/images/cleopatra.gif");
+
+var q7 = new Question(
+    'QVII: Which ancient Greek philsopher said "The only true wisdom is in knowing you know nothing"?', 
+    ['Thales',
+    'Pythagoras',
+    'Socrates',
+    'Plato'],
+    2, 
+    "./assets/images/socrates.gif");
+
+var q8 = new Question(
+    'QVIII: What famous battle saw a small Greek army that included 300 Spartan hoplites take on an enormous Persian army in 480 BC?', 
+    ['The Battle of Thermopylae',
+    'The Battle of Marathon',
+    'The Battle of Salamis',
+    'The Battle of Gaugamela'],
+    0, 
+    "./assets/images/thermopylae.gif");    
+
+var q9 = new Question(
+    'QIX: What queen of the British Celtic Iceni tribe led an uprising against the occupying forces of the Roman Empire?', 
+    ['Artemisia',
+    'Boudicca',
+    'Cartimandua',
+    'Nefertiti'],
+    1, 
+    "./assets/images/boudicca.gif");    
+
+questionList = [q1, q2, q3, q4, q5, q6, q7, q8, q9];
 
 Question.prototype.displayQuestion = function() {
     $("#question").html(this.question);
@@ -132,10 +168,23 @@ function createStatsPage() {
     $(".incorrect-text").remove();
     $("img").remove();
     $(".question-div").append('<h2 class="end-text">All done! Here\'s how you did:</h2>');
-    $(".question-div").append('<p class="stats">Correct Answers: ' + correct + '</p>');
-    $(".question-div").append('<p class="stats">Incorrect Answers: ' + incorrect + '</p>');
-    $(".question-div").append('<p class="stats">Unanswered: ' + unanswered + '</p>');
+    $(".question-div").append('<p class="stats">Correct Answers: ' + convertToRoman(correct) + '</p>');
+    $(".question-div").append('<p class="stats">Incorrect Answers: ' + convertToRoman(incorrect) + '</p>');
+    $(".question-div").append('<p class="stats">Unanswered: ' + convertToRoman(unanswered) + '</p>');
     $(".question-div").append('<button class="reset-button">START OVER?</button>');
+}
+
+function convertToRoman(num) {
+    var roman = "";
+    var romanNumerals = ["L", "XL", "X", "IX", "V", "IV", "I"];
+    var numbers = [50, 40, 10, 9, 5, 4, 1];
+    for (var i = 0; i < numbers.length; i++) {
+        while(num >= numbers[i]) {
+            roman += romanNumerals[i];
+            num -= numbers[i];
+        }
+    }
+    return roman;
 }
 
 function guessResult(guess) {

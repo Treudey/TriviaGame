@@ -68,7 +68,7 @@ main {
     font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
     background-color: #fcfcea;
     font-size: 3rem;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     border: none;
 }
@@ -88,8 +88,13 @@ img {
     height: 19rem;
 }
 
+.end-text {
+    font-size: 3rem;
+    margin-bottom: 1.8rem;
+}
+
 .stats {
-    font-size: 1.7rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
