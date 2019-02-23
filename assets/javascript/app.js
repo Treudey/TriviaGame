@@ -138,6 +138,7 @@ function convertToRoman(num) {
 
 function processGuess(guess) {
     clearInterval(questionTimer);
+
     if (guess === 0) {
         createResultPage(guess);
         unanswered++;
@@ -148,7 +149,9 @@ function processGuess(guess) {
         createResultPage(false);
         incorrect++;
     }
+
     index++;
+
     if (index > questionList.length - 1) {
         setTimeout(createStatsPage, 5000);
     } else {
@@ -230,5 +233,4 @@ $(document).ready(function() {
         $(".question-div").empty();
         initialize();
     });
-})
-
+});
