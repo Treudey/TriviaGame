@@ -119,6 +119,53 @@ function initialize() {
     $(".title").after('<button class="start-button">START</button>');
 }
 
+function convertToRoman(num) {
+    if (num === 0) {
+        return 0;
+    } else {
+        var roman = "";
+        var romanNumerals = ["L", "XL", "X", "IX", "V", "IV", "I"];
+        var numbers = [50, 40, 10, 9, 5, 4, 1];
+        for (var i = 0; i < numbers.length; i++) {
+            while(num >= numbers[i]) {
+                roman += romanNumerals[i];
+                num -= numbers[i];
+            }
+        }
+        return roman;
+    }
+}
+
+function processGuess(guess) {
+    clearInterval(questionTimer);
+    if (guess === 0) {
+        createResultPage(guess);
+        unanswered++;
+    } else if (currentQuestion.checkIfCorrect(guess)) {
+        createResultPage(true);
+        correct++;
+    } else {
+        createResultPage(false);
+        incorrect++;
+    }
+    index++;
+    if (index > questionList.length - 1) {
+        setTimeout(createStatsPage, 5000);
+    } else {
+        currentQuestion = questionList[index];
+        setTimeout(createQuestionPage, 5000);
+    }
+}
+
+function timer() {
+    timeLeft--;
+    $("#time").text(convertToRoman(timeLeft) + " Seconds");
+
+    if (timeLeft === 0) {
+        processGuess(timeLeft);
+    }
+}
+
 function createQuestionPage() {
     if (!$("#time-remaining").length) {
         $(".question-div").append('<h2 class="question-info" id="time-remaining">Time Remaing: <span class="question-info" id="time"></span></h2>');
@@ -132,17 +179,8 @@ function createQuestionPage() {
     }
     currentQuestion.displayQuestion();
     timeLeft = 30;
-    $("#time").text(timeLeft + " Seconds");
+    $("#time").text(convertToRoman(timeLeft) + " Seconds");
     questionTimer = setInterval(timer, 1000);
-}
-
-function timer() {
-    timeLeft--;
-    $("#time").text(timeLeft + " Seconds");
-
-    if (timeLeft === 0) {
-        guessResult(timeLeft);
-    }
 }
 
 function createResultPage(result) {
@@ -174,40 +212,6 @@ function createStatsPage() {
     $(".question-div").append('<button class="reset-button">START OVER?</button>');
 }
 
-function convertToRoman(num) {
-    var roman = "";
-    var romanNumerals = ["L", "XL", "X", "IX", "V", "IV", "I"];
-    var numbers = [50, 40, 10, 9, 5, 4, 1];
-    for (var i = 0; i < numbers.length; i++) {
-        while(num >= numbers[i]) {
-            roman += romanNumerals[i];
-            num -= numbers[i];
-        }
-    }
-    return roman;
-}
-
-function guessResult(guess) {
-    clearInterval(questionTimer);
-    if (guess === 0) {
-        createResultPage(guess);
-        unanswered++;
-    } else if (currentQuestion.checkIfCorrect(guess)) {
-        createResultPage(true);
-        correct++;
-    } else {
-        createResultPage(false);
-        incorrect++;
-    }
-    index++;
-    if (index > questionList.length - 1) {
-        setTimeout(createStatsPage, 5000);
-    } else {
-        currentQuestion = questionList[index];
-        setTimeout(createQuestionPage, 5000);
-    }
-}
-
 $(document).ready(function() {
 
     initialize();
@@ -219,7 +223,7 @@ $(document).ready(function() {
     
     $(document).on("click", ".answers", function() {
         var guess = $(this).text();
-        guessResult(guess);
+        processGuess(guess);
     });
     
     $(document).on("click", ".reset-button", function() {

@@ -17,9 +17,13 @@ body {
     background-position: center center;
 }
 
+main,
+button { font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif; }
+
+main,
+.answers { background-color: #fcfcea; }
+
 main {
-    background-color: #fcfcea;
-    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     min-width: 80%;
     min-height: 90%;
@@ -37,11 +41,18 @@ main {
     margin: 2rem 1rem;
 }
 
-.start-button {
-    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
+.start-button,
+.answers:hover,
+.reset-button { 
     background-color: #90c6ef;
-    color: #222222;
     border: .2rem solid #c9a758;
+}
+
+.start-button,
+.question-div,
+.reset-button { color: #222222; }
+
+.start-button {
     font-size: 3.5rem;
     font-weight: bold;
     height: 5rem;
@@ -52,9 +63,9 @@ main {
     margin-top: -2.5rem;
 }
 
+
 .question-div {
     margin: 0 13rem;
-    color: #222222;
     line-height: 1.5;
 }
 
@@ -65,18 +76,10 @@ main {
 
 .answers {
     display: block;
-    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
-    background-color: #fcfcea;
     font-size: 3rem;
     width: 70%;
     margin: 0 auto;
     border: none;
-}
-
-.answers:hover {
-    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
-    background-color: #90c6ef;
-    border: .2rem solid #c9a758;
 }
 
 .incorrect-text {
@@ -84,9 +87,7 @@ main {
     margin-bottom: .5rem;
 }
 
-img {
-    height: 19rem;
-}
+img { height: 19rem; }
 
 .end-text {
     font-size: 3rem;
@@ -99,10 +100,6 @@ img {
 }
 
 .reset-button {
-    font-family: 'Cinzel Regular', Georgia, 'Times New Roman', Times, serif;
-    background-color: #90c6ef;
-    color: #222222;
-    border: .2rem solid #c9a758;
     font-size: 3.1rem;
     width: 28rem;
 }
